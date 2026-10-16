@@ -1,0 +1,392 @@
+{
+    "scopeName": "source.ope",
+    "name": "Ope",
+    "fileTypes": ["ope"],
+    "patterns": [
+        { "include": "#funcCustomTypes" },
+        { "include": "#funcCustomTypes2" },
+        { "include": "#modEntries" },
+        { "include": "#documentations" },
+        { "include": "#comments" },
+        { "include": "#strings" },
+        { "include": "#numbers" },
+        { "include": "#flags" },
+        { "include": "#identPublic" },
+        { "include": "#identMut" },
+        { "include": "#identToOut" },
+        { "include": "#identToExtern" },
+        { "include": "#importAs" },
+        { "include": "#asType" },
+        { "include": "#macroDecls" },
+        { "include": "#conFlowKeywords" },
+        { "include": "#specKeywords" },
+        { "include": "#types" },
+        { "include": "#enumDecls" },
+        { "include": "#enumValType" },
+        { "include": "#structDecls" },
+        { "include": "#typeDecls" },
+        { "include": "#declKeywords" },
+        { "include": "#varKeywords" },
+        { "include": "#tyIdentifiers" },
+        { "include": "#macros" },
+        { "include": "#funcTypeIdents" },
+        { "include": "#TypeIdents" },
+        { "include": "#funcIdentifiers" },
+        { "include": "#storageKeywords" },
+        { "include": "#assignOprs" },
+        { "include": "#arithOprss" },
+        { "include": "#bitewiseOprs" },
+        { "include": "#logicOprs" },
+        { "include": "#compOprs" },
+        { "include": "#threeWayCompOprs" },
+        { "include": "#rangeOprs" },
+        { "include": "#pointerOprs" },
+        { "include": "#commands" },
+        { "include": "#knownAccess" },
+        { "include": "#namespaceAccess" },
+        { "include": "#literals" },
+        { "include": "#identifiers" }
+    ],
+    "repository": {
+        "modEntries": {
+            "patterns": [{
+                "name": "keyword.control.import.ope",
+                "match": "\\b(lo|mú)\\b"
+            }]
+        },
+
+        "importAs": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(pèéní)",
+            "captures": {
+                "1": { "name": "variable.other.ope" },
+                "2": { "name": "keyword.control.import.ope" }
+            }
+        },
+
+        "asType": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(bíi)",
+            "captures": {
+                "1": { "name": "variable.other.ope" },
+                "2": { "name": "keyword.control.import.ope" }
+            }
+        },
+
+        "identPublic": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(gbangba)",
+            "captures": {
+                "1": { "name": "variable.other.ope" },
+                "2": { "name": "markup.italic.ope keyword.other.ope" }
+            }
+        },
+
+        "identMut": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(tóyí)",
+            "captures": {
+                "1": { "name": "variable.other.ope" },
+                "2": { "name": "markup.italic.ope keyword.other.ope" }
+            }
+        },
+
+        "identToOut": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(síta)",
+            "captures": {
+                "1": { "name": "variable.other.ope" },
+                "2": { "name": "markup.italic.ope keyword.other.ope" }
+            }
+        },
+
+        "identToExtern": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(síde)",
+            "captures": {
+                "1": { "name": "variable.other.ope" },
+                "2": { "name": "markup.italic.ope keyword.other.ope" }
+            }
+        },
+
+        "comments": {
+            "patterns": [
+                { "name": "comment.line.double-slash.ope", "match": "//.*$" },
+                {
+                    "name": "comment.block.ope",
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "patterns": [{ "include": "#comments" }]
+                }
+            ]
+        },
+
+        "documentations": {
+            "patterns": [
+                { "name": "markup.bold.ope comment.line.double-slash.ope", "match": ";.*$" },
+                {
+                    "name": "markup.italic.ope string.quoted.double.ope",
+                    "begin": "\"\"\"",
+                    "end": "\"\"\"",
+                    "patterns": [
+                        { "match": "\\\\.", "name": "markup.italic.ope constant.character.escape.ope" }
+                    ]
+                }
+            ]
+        },
+
+        "strings": {
+            "patterns": [
+                { "name": "string.quoted.single.ope", "begin": "`", "end": "`", "patterns": [{ "match": "\\\\.", "name": "constant.character.escape.ope" }] },
+                { "name": "string.quoted.double.ope", "begin": "\"", "end": "\"", "patterns": [{ "match": "\\\\.", "name": "constant.character.escape.ope" }] },
+                { "name": "string.quoted.single.ope", "begin": "'", "end": "'", "patterns": [{ "match": "\\\\.", "name": "constant.character.escape.ope" }] }
+            ]
+        },
+
+        "numbers": {
+            "patterns": [
+                { "name": "constant.numeric.ope", "match": "\\b(0x[0-9A-Fa-f]+|\\d+(?:\\.\\d+)?)\\b" }
+            ]
+        },
+
+        "enumDecls": {
+            "match": "\\b(apẹ̀rẹ̀)\\s+([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)",
+            "captures": {
+                "1": { "name": "storage.type.ope" },
+                "2": { "name": "entity.name.type.ope" }
+            }
+        },
+
+        "enumValType": {
+            "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+(::)",
+            "captures": {
+                "1": { "name": "entity.name.type.ope" }
+            }
+        },
+
+        "structDecls": {
+            "match": "\\b(ìrísí)\\s+([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)",
+            "captures": {
+                "1": { "name": "storage.type.ope" },
+                "2": { "name": "entity.name.type.ope" }
+            }
+        },
+
+        "TypeIdents": {
+            "match": "([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)",
+            "captures": {
+                "1": { "name": "entity.name.type.ope" },
+                "2": { "name": "variable.other.ope" }
+            }
+        },
+
+        "funcTypeIdents": {
+            "match": "([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s+([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\s*(\\()",
+            "captures": {
+                "1": { "name": "entity.name.type.ope" },
+                "2": { "name": "entity.name.function.ope" }
+            }
+        },
+
+        "typeDecls": {
+            "begin": "\\b(afárá)",
+            "beginCaptures": {
+                "1": { "name": "keyword.other.ope" }
+            },
+            "end": "$|\\{|kárí|mú|lo|afárá|apẹ̀rẹ̀|ìrísí|iṣẹ́|ìríjú|àgánkọ|túmọ̀|ogún|#",
+            "patterns": [{
+                    "name": "keyword.control.ope",
+                    "match": "\\b(ṣe)\\b"
+                },
+                {
+                    "include": "#specKeywords"
+                },
+                {
+                    "include": "#types"
+                },
+                {
+                    "include": "#flags"
+                },
+                {
+                    "include": "#newType"
+                },
+                {
+                    "include": "#identifiers"
+                },
+                {
+                    "include": "#comments"
+                }
+            ]
+        },
+
+        "newType": {
+            "patterns": [{
+                "match": "(sí)\\s+(\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\b)",
+                "captures": {
+                    "1": { "name": "storage.type.ope" },
+                    "2": { "name": "entity.name.type.ope" }
+                }
+            }]
+        },
+
+        "namespaceAccess": {
+            "patterns": [{
+                "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\b\\s*::\\s*([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)",
+                "captures": {
+                    "1": { "name": "entity.name.type.ope" },
+                    "2": { "name": "variable.other.enummember.ope" }
+                }
+            }]
+        },
+
+        "knownAccess": {
+            "patterns": [{
+                "match": "\\b([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)\\b\\s*::\\s*(X86|Arm|Windows|Linux|Darwin|Android|IOS)",
+                "captures": {
+                    "1": { "name": "entity.name.type.ope" },
+                    "2": { "name": "markup.italic.ope constant.language.boolean.ope" }
+                }
+            }]
+        },
+
+        "storageKeywords": {
+            "comments": "storage.type.enum.ope, keyword.other.ope",
+            "patterns": [{
+                "name": "storage.type.ope",
+                "match": "\\b(ìrísí|apẹ̀rẹ̀)\\b"
+            }]
+        },
+
+        "declKeywords": {
+            "comments": "storage.type.ope",
+            "patterns": [{
+                "name": "keyword.other.ope",
+                "match": "\\b(iṣẹ́|afárá|túmọ̀|àfojúsùn|òṣìṣẹ́|àfijọ|àgánkọ|adágún)\\b"
+            }]
+        },
+
+        "varKeywords": {
+            "comments": "storage.type.ope",
+            "patterns": [{
+                "name": "markup.italic.ope keyword.declaration.ope",
+                "match": "\\b(kárí|kí|ní)\\b"
+            }]
+        },
+
+        "specKeywords": {
+            "patterns": [{
+                "name": "variable.language.self.ope",
+                "match": "\\b(òwun|àbájáde)\\b"
+            }]
+        },
+
+        "commands": {
+            "patterns": [{
+                "name": "markup.italic.ope storage.type.ope",
+                "match": "\\b(padà|tẹ̀síwájú|já|ré)\\b"
+            }]
+        },
+
+        "conFlowKeywords": {
+            "patterns": [{
+                "name": "keyword.control.ope",
+                "match": "\\b(pèéní|bíi|dúróde|bẹ̀rẹ̀|yí|kó|pòrì|tí|àìjẹ́bẹ̀|ṣe|sí|fún|gbìyànjú|ju|látinú|jọmọ́|níwọ̀bí|níbàámu|wo|jogún|tàṣé|máa_ṣa)\\b"
+            }]
+        },
+
+        "types": {
+            "comment": "entity.name.type.ope, for custom types, support.type.ope for primitives",
+            "patterns": [{
+                "name": "support.type.ope",
+                "match": "\\b(8d|16d|32d|64d|128d|àtó_d|8p|16p|32p|64p|128p|àtó_p|8b|16b|32b|64b|128b|àtó_b|wóró|ọsán|ǹjẹ́|ibùta|itùrin|òfìfo|òpin)\\b"
+            }]
+        },
+
+        "literals": {
+            "patterns": [{
+                "name": "markup.italic.ope constant.language.boolean.ope",
+                "match": "\\b(òtítọ́|irọ́|bóyá|agbede|àìwí|X86|Arm|Windows|Linux|Darwin|Android|IOS)\\b"
+            }]
+        },
+
+        "funcIdentifiers": {
+            "patterns": [{
+                "name": "entity.name.function.ope",
+                "match": "\\b[\\p{L}_][\\p{L}\\p{M}\\p{N}_]*\\b(\\s*\\()"
+            }]
+        },
+
+        "macroDecls": {
+            "match": "\\b(àgánkọ)\\s+([\\p{L}_][\\p{L}\\p{M}\\p{N}_]*)",
+            "captures": {
+                "1": { "name": "storage.type.enum.ope" },
+                "2": { "name": "entity.name.function.ope" }
+            }
+        },
+
+        "macros": {
+            "patterns": [{
+                "name": "entity.name.function.preprocessor.ope",
+                "match": "(#)\\b[\\p{L}_][\\p{L}\\p{M}\\p{N}_]*\\b"
+            }]
+        },
+
+        "identifiers": {
+            "patterns": [{
+                "name": "variable.other.ope",
+                "match": "\\b[\\p{L}_][\\p{L}\\p{M}\\p{N}_]*\\b"
+            }]
+        },
+
+        "flags": {
+            "comment": "keyword.operator.ope, keyword.control.directive.ope",
+            "patterns": [{
+                "name": "markup.italic.ope keyword.other.ope",
+                "match": "(síta|sóde|látòde|tóyí|gbangba|àrọ́sí|hán)"
+            }]
+        },
+
+        "assignOprs": {
+            "patterns": [{
+                "name": "keyword.operator.assignment.ope",
+                "match": "(\\+=|-=|\\*=)"
+            }]
+        },
+        "arithOprs": {
+            "patterns": [{
+                "name": "keyword.operator.arithmetic.ope",
+                "match": "(\\+|-|\\*|/|%)"
+            }]
+        },
+        "bitwiseOprs": {
+            "patterns": [{
+                "name": "keyword.operator.bitwise.ope",
+                "match": "(\\^|~|<<|>>)"
+            }]
+        },
+        "logicOprs": {
+            "patterns": [{
+                "name": "keyword.operator.Reference.ope",
+                "match": "(&|\\*|\\||!)"
+            }]
+        },
+        "compOprs": {
+            "patterns": [{
+                "name": "keyword.operator.comparison.ope",
+                "match": "(=|!=|<|>|<=|>=)"
+            }]
+        },
+        "threeWayCompOprs": {
+            "patterns": [{
+                "name": "keyword.operator.spaceship.ope",
+                "match": "(<=>)"
+            }]
+        },
+        "rangeOprs": {
+            "patterns": [{
+                "name": "keyword.operator.range.ope",
+                "match": "(\\.\\.\\.)"
+            }]
+        },
+        "pointerOprs": {
+            "patterns": [{
+                "name": "keyword.operator.pointer.ope",
+                "match": "(#|@)"
+            }]
+        }
+    }
+}
